@@ -1,0 +1,108 @@
+
+{% extends 'base/base-owner.html' %}
+
+{% block content %}
+
+<div class="grid gap-8 mt-8" style="grid-template-areas: 
+'div1 div2 div3'
+'div1 div4 div4';">
+    <div style="grid-area: div1;">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg grid items-center">
+            <h1 class="text-lg font-semibold">Data Pemesanan</h1>         
+        </div>
+    
+        <!-- Table -->
+        <div class="bg-white rounded-b-lg shadow">
+            <div class="rounded-b-[10px] px-6">
+            <table class="table-auto w-full text-left border-collapse px-2">
+                    <thead>
+                        <tr >
+                            <th class="py-3 border-b text-center">Nomor</th>
+                            <th class="py-3 border-b text-center">Pelanggan</th>
+                            <th class="py-3 border-b text-center">Layanan</th>
+                            <th class="py-3 border-b text-center">Tanggal Pengerjaan</th>
+                            <th class="py-3 border-b text-center">Tanggal Pemesanan</th>
+                            <th class="py-3 border-b text-center">Harga</th>
+                            <th class="py-3 border-b text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data_pemesanan %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="pl-10 border-b">{{i.id_pemesanan}}</td>
+                            <td class="p-3 border-b">{{i.pelanggan}}</td>
+                            <td class="p-3 border-b">{{i.layanan_sewa}}</td>
+                            <td class="p-3 border-b">{{i.tanggal_pengerjaan}}</td>
+                            <td class="p-3 border-b">{{i.tanggal_pemesanan}}</td>
+                            <td class="p-3 border-b">{{i.harga}}</td>
+                            <td class="p-3 border-b">{{i.status}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="grid-area: div2;">
+        <div class="bg-blue-600 text-white py-3 rounded-t-lg flex justify-center items-center">
+            <h1 class="text-lg font-semibold">Total Pemesanan</h1>          
+        </div>
+        <div class="flex justify-center p-4 rounded-b-lg shadow">
+            <h1 class="font-semibold text-3xl"><b>{{data_pemesanan|length}}</b></h1>
+        </div>
+    </div>
+
+    <div style="grid-area: div3;">
+        <div class="bg-blue-600 text-white py-3 rounded-t-lg flex justify-center items-center">
+            <h1 class="text-lg font-semibold">Total Pelanggan</h1>          
+        </div>
+        <div class="flex justify-center p-4 rounded-b-lg shadow">
+            <h1 class="font-semibold text-3xl"><b>{{data_pelanggan|length}}</b></h1>
+        </div>
+    </div>
+
+    <div style="grid-area: div4;">
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h1 class="text-lg font-semibold">Data Pelanggan</h1>   
+            <div>
+                <button class="bg-yellow-500 hover:bg-yellow-400 text-white py-2 px-4 ml-2 rounded inline-flex items-center">
+                    <a href="{% url 'data-pelanggan-owner' %}   ">Lihat data pelanggan</a>
+                </button>
+            </div>        
+        </div>
+    
+        <!-- Table -->
+        <div class="bg-white rounded-b-lg shadow">
+            <div class="rounded-b-[10px]">
+            <table class="table-auto w-full text-left border-collapse px-2">
+                    <thead>
+                        <tr >
+                            <th class="p-3 border-b text-center">Nomor</th>
+                            <th class="p-3 border-b text-center">Nama</th>
+                            <th class="p-3 border-b text-center">Alamat</th>
+                            <th class="p-3 border-b text-center">Nomor Handphone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data_pelanggan %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="pl-10 border-b text-center">{{i.id_customer}}</td>
+                            <td class="p-3 border-b text-center">{{i.nama_pelanggan}}</td>
+                            <td class="p-3 border-b text-center">{{i.alamat}}</td>
+                            <td class="p-3 border-b text-center">{{i.nomor_hp}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block title %}
+    Dashboard Owner
+{% endblock title %}

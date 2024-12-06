@@ -1,0 +1,108 @@
+{% extends 'base/base-admin.html' %}
+
+{% block title %}
+    Dashboard Admin
+{% endblock title %}
+
+{% block content %}
+
+<div class="grid grid-cols-[1fr_0.4fr] gap-8 mt-8">
+    <div>
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h1 class="text-lg font-semibold">Data Pemesanan</h1>   
+            <div>
+                <button class="bg-green-500 hover:bg-green-400 text-white py-2 px-4 ml-2 rounded inline-flex items-center">
+                    <a href="{% url 'create-data-pemesanan' %}">Tambah data pemesanan</a>
+                </button>
+            </div>        
+        </div>
+    
+        <!-- Table -->
+        <div class="bg-white rounded-b-lg shadow">
+            <div class="rounded-b-[10px]">
+            <table class="table-auto w-full text-left border-collapse px-2">
+                    <thead>
+                        <tr >
+                            <th class="py-3 border-b text-center">Nomor</th>
+                            <th class="py-3 border-b text-center">Pelanggan</th>
+                            <th class="py-3 border-b text-center">Layanan</th>
+                            <th class="py-3 border-b text-center">Tanggal Pengerjaan</th>
+                            <th class="py-3 border-b text-center">Tanggal Pemesanan</th>
+                            <th class="py-3 border-b text-center">Harga</th>
+                            <th class="py-3 border-b text-center">Status</th>
+                            <th class="py-3 border-b text-center">Ubah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data_pemesanan %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="pl-10 border-b">{{i.id_pemesanan}}</td>
+                            <td class="p-3 border-b">{{i.pelanggan}}</td>
+                            <td class="p-3 border-b">{{i.layanan_sewa}}</td>
+                            <td class="p-3 border-b">{{i.tanggal_pengerjaan}}</td>
+                            <td class="p-3 border-b">{{i.tanggal_pemesanan}}</td>
+                            <td class="p-3 border-b">{{i.harga}}</td>
+                            <td class="p-3 border-b">{{i.status}}</td>
+                            <td class="p-3 border-b text-center items-center">
+                                <a href="" class="hover:bg-green-400  text-white py-2 px-4 bg-green-500 rounded-md" value="Update">
+                                    Selesaikan
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    
+                <!-- Pagination -->
+                <div class="flex flex-end p-4">
+                    <span class="text-gray-600">Menampilkan <b>{{data_pemesanan|length}}</b> data pemesanan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div>
+        <div class="bg-blue-600 text-white py-3 px-4 rounded-t-lg flex justify-between items-center">
+            <h1 class="text-lg font-semibold">Data Pelanggan</h1>   
+            <div>
+                <button class="bg-yellow-500 hover:bg-yellow-400 text-white py-2 px-4 ml-2 rounded inline-flex items-center">
+                    <a href="{% url 'data-pelanggan' %}">Lihat data pelanggan</a>
+                </button>
+            </div>        
+        </div>
+    
+        <!-- Table -->
+        <div class="bg-white rounded-b-lg shadow">
+            <div class="rounded-b-[10px]">
+            <table class="table-auto w-full text-left border-collapse px-2">
+                    <thead>
+                        <tr >
+                            <th class="p-3 border-b text-center">Nomor</th>
+                            <th class="p-3 border-b text-center">Nama</th>
+                            <th class="p-3 border-b text-center">Alamat</th>
+                            <th class="p-3 border-b text-center">Nomor Handphone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in data_pelanggan %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="pl-10 border-b text-center">{{i.id_customer}}</td>
+                            <td class="p-3 border-b text-center">{{i.nama_pelanggan}}</td>
+                            <td class="p-3 border-b text-center">{{i.alamat}}</td>
+                            <td class="p-3 border-b text-center">{{i.nomor_hp}}</td>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    
+                <!-- Pagination -->
+                <div class="flex flex-end p-4">
+                    <span class="text-gray-600">Menampilkan <b>{{data_pelanggan|length}}</b> data pelanggan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}

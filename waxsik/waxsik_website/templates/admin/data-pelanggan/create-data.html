@@ -1,0 +1,60 @@
+{% extends 'base/base-admin.html' %}
+
+{% block title %}
+    Data Pemesanan
+{% endblock title %}
+
+{% block content %}
+
+
+<!-- <form action="" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="submit" id="">
+</form>  -->
+
+<form action="" method="POST" class="max-w-sm mx-auto">
+    {% csrf_token %}
+    <div class="mb-5">
+        <label for="nomor_hp" class="block mb-2 text-sm font-medium ">
+            {{ form.pelanggan.label }}
+        </label>
+        {{ form.pelanggan }}
+    </div>
+    <div class="mb-5">
+        <label for="nomor_hp" class="block mb-2 text-sm font-medium ">
+            {{ form.layanan_sewa.label }}
+        </label>
+        {{ form.layanan_sewa }}
+    </div>
+    <div class="mb-5">
+        <label for="nomor_hp" class="block mb-2 text-sm font-medium ">
+            {{ form.admin.label }}
+        </label>
+        {{ form.admin }}
+    </div>
+    <div class="mb-5">
+        <label for="tanggal_pengerjaan" class="block mb-2 text-sm font-medium ">
+            {{ form.tanggal_pengerjaan.label }}
+        </label>
+        {{ form.tanggal_pengerjaan }}
+    </div>
+    <div class="mb-5">
+        <label for="alamat" class="block mb-2 text-sm font-medium ">
+            {{ form.tanggal_pemesanan.label }}
+        </label>
+        {{ form.tanggal_pemesanan }}
+    </div>
+    <div class="mb-5">
+        <label for="nomor_hp" class="block mb-2 text-sm font-medium ">
+            {{ form.status.label }}
+        </label>
+        {{ form.status }}
+    </div>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Submit
+    </button> 
+    <a href="/dashboard-admin" class="text-white py-2 px-6 bg-red-500 rounded-md">Cancel</a>
+</form>
+
+{% endblock content %}
